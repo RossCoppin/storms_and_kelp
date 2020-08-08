@@ -1,0 +1,385 @@
+library(vegan)
+library(vegan)
+library(ggplot2)
+library(tidyverse)
+df <- read.csv("data/stormcast_2015.csv")
+View(df)
+df <- read.csv("data/stormcast_2015.csv", sep = ";")
+df <- read.csv("data/stormcast_2015.csv")
+View(df)
+df <- read.csv("data/stormcast_2015.csv", sep = ";")
+View(df)
+View(df)
+df_2018 <- read.csv("data/stormcast_2018.csv")
+View(df_2018)
+df_2017 <- read.csv("data/stormcast_2017.csv", sep = ";")
+df_2018 <- read.csv("data/stormcast_2018.csv")
+df_2017 <- read.csv("data/stormcast_2017.csv", sep = ";")
+df_2018 <- read.csv("data/stormcast_2018.csv")
+df_2017 <- read.csv("data/stormcast_2017.csv", sep = ";")
+df_2018 <- read.csv("data/stormcast_2018.csv", sep = ";")
+View(df_2018)
+library(vegan)
+library(ggplot2)
+library(tidyverse)
+ggplot(data = df_2017) +
+geom_boxplot()
+library(reshape2)
+df_2017 <- read.csv("data/stormcast_2017.csv", sep = ";") %>%
+melt(value.name = "measurement", id.vars = c("ind","site", "date", "phase"), variable.name = "morph")
+df_2017 <- read.csv("data/stormcast_2017.csv", sep = ";") %>%
+melt(data = df_2017, value.name = "measurement", id.vars = c("ind","site", "date", "phase"), variable.name = "morph")
+View(df_2017)
+library(vegan)
+library(ggplot2)
+library(tidyverse)
+library(reshape2)
+df_2017 <- read.csv("data/stormcast_2017.csv", sep = ";") %>%
+melt(data = df_2017, value.name = "measurement", id.vars = c("ind","site", "date", "phase"), variable.name = "morph")
+df_2017 <- read.csv("data/stormcast_2017.csv", sep = ";") %>%
+melt(value.name = "measurement", id.vars = c("ind","site", "date", "phase"), variable.name = "morph")
+ggplot(data = df_2017, x = site, y = measurement) +
+geom_boxplot()
+ggplot(data = df_2017, aes(x = site, y = measurement)) +
+geom_boxplot()
+ggplot(data = df_2017, aes(x = site, y = measurement)) +
+geom_boxplot() +
+facet_wrap(~morph)
+ggplot(data = df_2017, aes(x = site, y = measurement)) +
+geom_boxplot() +
+facet_wrap(~morph, scales = "free")
+ggplot(data = df_2017, aes(x = site, y = measurement)) +
+geom_boxplot() +
+facet_wrap(~morph, scales = "free_x")
+ggplot(data = df_2017, aes(x = site, y = measurement)) +
+geom_boxplot() +
+facet_wrap(~phase, scales = "free")
+ggplot(data = df_2017, aes(x = site, y = measurement)) +
+geom_boxplot() +
+facet_wrap(~phase, scales = "free") +
+coord_flip()
+ggplot(data = df_2017, aes(x = site, y = stipe_length$measurement)) +
+geom_boxplot() +
+facet_wrap(~phase, scales = "free") +
+coord_flip()
+df_2017 <- read.csv("data/stormcast_2017.csv", sep = ";") %>%
+melt(value.name = "value", id.vars = c("ind","site", "date", "phase"), variable.name = "morph")
+df_2018 <- read.csv("data/stormcast_2018.csv", sep = ";")
+ggplot(data = df_2017, aes(x = site, y = value)) +
+geom_boxplot() +
+facet_wrap(~phase, scales = "free") +
+coord_flip()
+ggplot(data = df_2017, aes(x = site, y = value, fill = phase)) +
+geom_boxplot() +
+facet_wrap(~phase, scales = "free") +
+coord_flip()
+ggplot(data = df_2017, aes(x = site, y = value, fill = morph)) +
+geom_boxplot() +
+facet_wrap(~phase, scales = "free") +
+coord_flip()
+library(vegan)
+library(vegan)
+library(ggplot2)
+library(tidyverse)
+library(reshape2)
+df_2017 <- read.csv("data/stormcast_2017.csv", sep = ";") %>%
+melt(value.name = "value", id.vars = c("ind","site", "date", "phase"), variable.name = "morph")
+df_2018 <- read.csv("data/stormcast_2018.csv", sep = ";")
+ggplot(data = df_2017, aes(x = site, y = value, fill = morph)) +
+geom_boxplot() +
+facet_wrap(~phase, scales = "free") +
+coord_flip()
+plot_a
+ggplot(data = df_2017, aes(x = site, y = value)) +
+geom_boxplot() +
+facet_wrap(~morph, scales = "free") +
+coord_flip()
+ggplot(data = df_2017, aes(x = site, y = value, colour = phase)) +
+geom_boxplot() +
+facet_wrap(~morph, scales = "free") +
+coord_flip()
+ggplot(data = df_2017, aes(x = site, y = value, colour = phase)) +
+geom_boxplot() +
+facet_wrap(~morph, scales = "fixed") +
+coord_flip()
+ggplot(data = df_2017, aes(x = morph, y = value, colour = phase)) +
+geom_boxplot() +
+facet_wrap(~morph, scales = "free") +
+coord_flip()
+library(vegan)
+library(ggplot2)
+library(tidyverse)
+library(reshape2)
+morph <- read.csv("data/stormcast_2017.csv", sep = ";")
+morph_long <- df %>%
+melt(value.name = "value", id.vars = c("ind","site", "date", "phase"), variable.name = "morph")
+morph_mean <- eck_gather %>%
+group_by(site, morph) %>%
+summarise(mean = mean(value, na.rm = TRUE)) %>%
+ungroup()
+library(tidyverse)
+library(vegan)
+library(RColorBrewer)
+library(gridExtra)
+library(lubridate)
+library(GGally)
+library(ggpubr)
+library(ggrepel)
+morph <- read.csv("data/stormcast_2017.csv", sep = ";")
+morph_long <- df %>%
+melt(value.name = "value", id.vars = c("ind","site", "date", "phase"), variable.name = "morph")
+morph_mean <- eck_gather %>%
+group_by(site, morph) %>%
+summarise(mean = mean(value, na.rm = TRUE)) %>%
+ungroup()
+library(tidyverse)
+library(vegan)
+library(RColorBrewer)
+library(gridExtra)
+library(lubridate)
+library(GGally)
+library(ggpubr)
+library(ggrepel)
+morph <- read.csv("data/stormcast_2017.csv", sep = ";")
+morph_lng <- df %>%
+melt(value.name = "value", id.vars = c("ind","site", "date", "phase"), variable.name = "morph")
+morph_mean <- morph_lng %>%
+group_by(site, morph) %>%
+summarise(mean = mean(value, na.rm = TRUE)) %>%
+ungroup()
+View(morph)
+morph <- read.csv("data/stormcast_2017.csv", sep = ";")
+# remove unnecessary columns
+morph <- subset(eck, select = -c(1,9,10))
+# remove unnecessary columns
+morph <- subset(morph, select = -c(1,9,10))
+View(morph)
+morph_lng <- df %>%
+melt(value.name = "value", id.vars = c("ind","site", "date", "phase"), variable.name = "morph")
+morph_mean <- morph_lng %>%
+group_by(site, morph) %>%
+summarise(mean = mean(value, na.rm = TRUE)) %>%
+ungroup()
+library(tidyverse)
+library(vegan)
+library(RColorBrewer)
+library(gridExtra)
+library(lubridate)
+library(GGally)
+library(ggpubr)
+library(ggrepel)
+morph <- read.csv("data/stormcast_2017.csv", sep = ";")
+View(morph)
+# remove unnecessary columns
+morph <- subset(morph, select = -c(1,3,9,10))
+morph_lng <- df %>%
+melt(value.name = "value", id.vars = c("ind","site", "date", "phase"), variable.name = "morph")
+library(reshape2)
+morph <- read.csv("data/stormcast_2017.csv", sep = ";")
+# remove unnecessary columns
+morph <- subset(morph, select = -c(1,3,9,10))
+morph_lng <- melt(value.name = "value", id.vars = c("ind","site", "date", "phase"), variable.name = "morph")
+morph_lng <- melt(data = morph, value.name = "value", id.vars = c("ind","site", "date", "phase"), variable.name = "morph")
+View(morph)
+morph_lng <- melt(data = morph, value.name = "value", id.vars = c("site", "phase"), variable.name = "morph")
+View(morph_lng)
+morph <- read.csv("data/stormcast_2017.csv", sep = ";") %>%
+subset(morph, select = -c(1,3,9,10)) %>%
+melt(data = morph, value.name = "value", id.vars = c("site", "phase"), variable.name = "morph")
+morph <- read.csv("data/stormcast_2017.csv", sep = ";") %>%
+subset(morph, select = c(1,3,9,10)) %>%
+melt(data = morph, value.name = "value", id.vars = c("site", "phase"), variable.name = "morph")
+morph <- read.csv("data/stormcast_2017.csv", sep = ";")
+# remove unnecessary columns
+morph <- subset(morph, select = -c(1,3,9,10))
+morph_lng <- melt(data = morph, value.name = "value", id.vars = c("site", "phase"), variable.name = "morph")
+morph <- read.csv("data/stormcast_2017.csv", sep = ";") %>%
+morph <- subset(morph, select = -c(1,3,9,10))
+morph <- read.csv("data/stormcast_2017.csv", sep = ";") %>%
+subset(morph, select = -c(1,3,9,10))
+morph <- read.csv("data/stormcast_2017.csv", sep = ";") %>%
+subset(select = -c(1,3,9,10))
+View(morph)
+morph <- read.csv("data/stormcast_2017.csv", sep = ";") %>%
+subset(select = -c(1,3,9,10)) %>%
+melt(data = morph, value.name = "value", id.vars = c("site", "phase"), variable.name = "morph")
+View(morph)
+morph <- read.csv("data/stormcast_2017.csv", sep = ";") %>%
+subset(select = -c(1,3,9,10)) %>%
+melt(data = morph, value.name = "value", id.vars = c("site", "phase"), variable.name = "morph")
+morph <- read.csv("data/stormcast_2017.csv", sep = ";") %>%
+subset(select = -c(1,3,9,10)) %>%
+melt(data = morph, value.name = "value", id.vars = c("site", "phase"), variable.name = "morph")
+morph <- read.csv("data/stormcast_2017.csv", sep = ";") %>%
+subset(morph, select = -c(1,3,9,10)) %>%
+melt(data = morph, value.name = "value", id.vars = c("site", "phase"), variable.name = "morph")
+morph <- read.csv("data/stormcast_2017.csv", sep = ";")
+morph <- subset(morph, select = -c(1,3,9,10)) %>%
+melt(data = morph, value.name = "value", id.vars = c("site", "phase"), variable.name = "morph")
+View(morph)
+morph <- subset(morph, select = -c(1,3,9,10)) %>%
+melt(data = morph, value.name = "value", id.vars = c("site", "phase"), variable.name = "morph")
+View(morph)
+morph <- read.csv("data/stormcast_2017.csv", sep = ";")
+# remove unnecessary columns
+morph <- subset(morph, select = -c(1,3,9,10))
+morph_lng <- melt(data = morph, value.name = "value", id.vars = c("site", "phase"), variable.name = "morph")
+View(morph)
+View(morph_lng)
+ggplot(data = morph_lng, aes(x = site, y = value)) +
+geom_boxplot() +
+coord_flip()
+View(morph)
+ggplot(data = morph, aes(x = site, y = primary_width)) +
+geom_boxplot() +
+coord_flip()
+ggplot(data = morph, aes(x = site, y = primary_width, colour = phase)) +
+geom_boxplot() +
+coord_flip()
+morph_df <- read.csv("data/stormcast_2017.csv", sep = ";")
+morph_df <- subset(morph, select = -c(1,3,9,10))
+morph_lng_df <- melt(data = morph, value.name = "value", id.vars = c("site", "phase"), variable.name = "morph")
+morph_df <- read.csv("data/stormcast_2017.csv", sep = ";")
+morph_df <- subset(morph_df, select = -c(1,3,9,10))
+morph_lng_df <- melt(data = morph_df, value.name = "value", id.vars = c("site", "phase"), variable.name = "morph")
+ggplot(data = morph_lng, aes(x = site, y = morph, colour = phase)) +
+geom_boxplot() +
+coord_flip()
+ggplot(data = morph_lng_df, aes(x = site, y = morph, colour = phase)) +
+geom_boxplot() +
+coord_flip()
+ggplot(data = morph_lng_df, aes(x = site, y = morph, colour = phase)) +
+geom_boxplot()
+ggplot(data = morph_lng_df, aes(x = site, y = morph, colour = phase)) +
+geom_boxplot() +
+facet_wrap(~morph)
+ggplot(data = morph_lng_df, aes(x = site, y = value, colour = phase)) +
+geom_boxplot() +
+facet_wrap(~morph)
+?melt
+morph_lng_df <- melt(data = morph_df, value.name = "measurement", id.vars = c("site", "phase"), variable.name = "morph")
+ggplot(data = morph_lng_df, aes(x = site, y = measurement, colour = phase)) +
+geom_boxplot() +
+facet_wrap(~morph)
+ggplot(data = morph_lng_df, aes(x = phase, y = measurement)) +
+geom_boxplot() +
+facet_wrap(~site)
+View(morph_df)
+morph_gather_mean <- morph_lng_df %>%
+group_by(site, morph) %>%
+summarise(mean = mean(measurement, na.rm = TRUE)) %>%
+ungroup()
+View(morph_gather_mean)
+morph_df <- read.csv("data/stormcast_2017.csv", sep = ";")
+morph_df <- subset(morph_df, select = -c(1,3,9,10))
+morph_lng_df <- melt(data = morph_df, value.name = "measurement", id.vars = c("site", "phase"), variable.name = "morph")
+morph_gather_mean <- morph_lng_df %>%
+group_by(site, morph) %>%
+summarise(mean = mean(measurement, na.rm = TRUE)) %>%
+ungroup()
+View(morph_gather_mean)
+View(morph_lng_df)
+morph_df <- read.csv("data/stormcast_2017.csv", sep = ";")
+morph_df <- subset(morph_df, select = -c(1,3,9,10))
+morph_lng_df <- melt(data = morph_df, value.name = "measurement", id.vars = c("site", "phase"), variable.name = "morph")
+morph_gather_mean <- morph_lng_df %>%
+group_by(site, morph) %>%
+summarise(mean = mean(measurement, na.rm = TRUE)) %>%
+ungroup()
+View(morph_gather_mean)
+morph_df <- read.csv("data/stormcast_2017.csv", sep = ";", header = TRUE)
+morph_df <- subset(morph_df, select = -c(1,3,9,10))
+morph_lng_df <- melt(data = morph_df, value.name = "measurement", id.vars = c("site", "phase"), variable.name = "morph")
+morph_gather_mean <- morph_lng_df %>%
+group_by(site, morph) %>%
+summarise(mean = mean(measurement, na.rm = TRUE)) %>%
+ungroup()
+View(morph_gather_mean)
+View(morph_lng_df)
+ggplot(data = morph_lng_df, aes(x = site, y = measurement)) +
+geom_boxplot() +
+facet_wrap(~morph, scales = "free_x", strip.position = "bottom", ncol = 5) +
+coord_flip() +
+scale_x_discrete(limits = positionsEck) +
+theme(strip.background = element_blank(), strip.placement = "outside", text = element_text(size = 4.5)) +
+theme_bw() +
+xlab("") +
+ylab("")
+ggplot(data = morph_lng_df, aes(x = site, y = measurement)) +
+geom_boxplot() +
+facet_wrap(~morph, scales = "free_x", strip.position = "bottom", ncol = 5) +
+coord_flip() +
+theme(strip.background = element_blank(), strip.placement = "outside", text = element_text(size = 4.5)) +
+theme_bw() +
+xlab("") +
+ylab("")
+ggplot(data = morph_lng_df, aes(x = site, y = measurement)) +
+geom_boxplot() +
+facet_wrap(~morph, scales = "free_x", strip.position = "bottom", ncol = 5) +
+coord_flip() +
+theme(strip.background = element_blank(), strip.placement = "outside", text = element_text(size = 4.5)) +
+theme_bw() +
+xlab("") +
+ylab("")
+ggplot(data = morph_lng_df, aes(x = site, y = measurement)) +
+geom_boxplot() +
+facet_wrap(~morph, scales = "free_x", strip.position = "bottom", ncol = 5) +
+coord_flip() +
+theme(strip.background = element_blank(), strip.placement = "outside", text = element_text(size = 4.5)) +
+theme_bw() +
+xlab("") +
+ylab("")
+morph_df <- read.csv("data/stormcast_2017.csv", sep = ";", header = TRUE)
+morph_df <- subset(morph_df, select = -c(1,3,9,10))
+morph_lng_df <- melt(data = morph_df, value.name = "measurement", id.vars = c("site", "phase"), variable.name = "morph")
+ggplot(data = morph_lng_df, aes(x = site, y = measurement)) +
+geom_boxplot() +
+facet_wrap(~morph, scales = "free_x", strip.position = "bottom", ncol = 5) +
+coord_flip() +
+theme(strip.background = element_blank(), strip.placement = "outside", text = element_text(size = 4.5)) +
+theme_bw() +
+xlab("") +
+ylab("")
+ggplot(data = morph_lng_df, aes(x = site, y = morph)) +
+geom_boxplot() +
+facet_wrap(~morph, scales = "free_x", strip.position = "bottom", ncol = 5) +
+coord_flip() +
+theme(strip.background = element_blank(), strip.placement = "outside", text = element_text(size = 4.5)) +
+theme_bw() +
+xlab("") +
+ylab("")
+ggplot(data = morph_df, aes(x = site, y = stipe_length)) +
+geom_boxplot() +
+facet_wrap(~site, scales = "free_x", strip.position = "bottom", ncol = 5) +
+coord_flip() +
+theme(strip.background = element_blank(), strip.placement = "outside", text = element_text(size = 4.5)) +
+theme_bw() +
+xlab("") +
+ylab("")
+view(morph_df)
+morph_df <- read.csv("data/stormcast_2017.csv", sep = ";", as.is=T)
+morph_df <- subset(morph_df, select = -c(1,3,9,10))
+morph_df <- read.csv("data/stormcast_2017.csv", sep = ";", as.is=T)
+morph_df <- read.csv("data/stormcast_2017.csv", sep = ";", as.is=T)
+morph_df <- subset(morph_df, select = -c(1,3,9,10))
+morph_lng_df <- melt(data = morph_df, value.name = "measurement", id.vars = c("site", "phase"), variable.name = "morph")
+ggplot(data = morph_lng_df, aes(x = site, y = measurement)) +
+geom_boxplot() +
+facet_wrap(~morph, scales = "free_x", strip.position = "bottom", ncol = 5) +
+coord_flip() +
+theme(strip.background = element_blank(), strip.placement = "outside", text = element_text(size = 4.5)) +
+theme_bw() +
+xlab("") +
+ylab("")
+morph_df <- read.csv("data/stormcast_2017.csv", sep = ";", as.is=T)
+View(morph_df)
+library(tidyverse)
+library(vegan)
+library(lubridate)
+library(reshape2)
+library(ggpubr)
+morph_df <- read.csv("data/stormcast_2017.csv", sep = ";", as.is=T)
+morph_df <- subset(morph_df, select = -c(3,8,10))
+View(morph_df)
+View(morph_df)
+morph_df <- read.csv("data/stormcast_2017.csv", sep = ";", stringsAsFactors = TRUE)
