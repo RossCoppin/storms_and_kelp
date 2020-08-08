@@ -14,13 +14,15 @@ library(reshape2)
 ```
 
 ```{r}
-
-df_2017 <- read.csv("data/stormcast_2017.csv", sep = ";") %>% 
-  melt(value.name = "value", id.vars = c("ind","site", "date", "phase"), variable.name = "morph")
-
-df_2018 <- read.csv("data/stormcast_2018.csv", sep = ";")
-
+df <- read.csv("data/stormcast_2017.csv", sep = ";") # read in data
 
 ```
 
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+bxplot <- ggplot2(data = df)
+
+
+```
 
