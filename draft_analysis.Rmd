@@ -14,15 +14,7 @@ library(reshape2)
 ```
 
 ```{r}
-df <- read.csv("data/stormcast_2017.csv", sep = ";") # read in data
-
-```
-
-
-```{r echo=FALSE, message=FALSE, warning=FALSE}
-
-bxplot <- ggplot2(data = df)
-
+df <- read.csv("data/stormcast_data.csv", sep = ";") # read in data
 
 ```
 
